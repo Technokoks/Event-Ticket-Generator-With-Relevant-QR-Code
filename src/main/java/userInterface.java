@@ -1,17 +1,13 @@
 import java.util.List;
+import java.util.UUID;
 
 public class userInterface extends javax.swing.JFrame {
 
-    private static List<Contestant> contestants;
-    private static Contestant contestant;
+    static Integer sheetsdone = 0;
 
 
      private userInterface() {
         initComponents();
-        DataReader rd = new DataReader();
-        contestants = rd.getData();
-        contestant = null;
-
     }
 
 
@@ -51,10 +47,10 @@ public class userInterface extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(0, 204, 204));
 
-        jLabel1.setText("Student ID :");
+        jLabel1.setText("Additional Information: ");
 
         gId.setBackground(new java.awt.Color(0, 153, 153));
-        gId.setToolTipText("201XXXXXXXXXX");
+        gId.setToolTipText("Type here");
         gId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 gIdActionPerformed(evt);
@@ -63,7 +59,7 @@ public class userInterface extends javax.swing.JFrame {
 
         jButton1.setBackground(new java.awt.Color(0, 102, 153));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Search");
+        jButton1.setText("Set Info");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchInfo(evt);
@@ -109,22 +105,22 @@ public class userInterface extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("Student Id:");
+        jLabel2.setText("Ticket for Party");
 
-        jLabel3.setText("Studnet Name: ");
+        jLabel3.setText("Ticket ID(example): ");
 
-        jLabel4.setText("Prefered Catagory:");
+        jLabel4.setText("Additional Text:");
 
-        jLabel5.setText("Batch:");
+        jLabel5.setText("Type: ");
 
-        pName.setText("Jon Doe");
+        pName.setText(UUID.randomUUID().toString());
 
-        pId.setText("201XXXXXXXXXX");
+        pId.setText("");
 
-        batch.setText("XX");
+        batch.setText("VVK");
         batch.setToolTipText("");
 
-        pCatagory.setText("Advance");
+        pCatagory.setText("");
         pCatagory.setToolTipText("");
 
         javax.swing.GroupLayout pBatchLayout = new javax.swing.GroupLayout(pBatch);
@@ -214,26 +210,24 @@ public class userInterface extends javax.swing.JFrame {
 
 
     private void searchInfo(java.awt.event.ActionEvent evt) {
-        String id = gId.getText().trim();
-        contestant = null;
-        for(Contestant con: contestants)
-            if(con.getId().equals(id)){
-                contestant = con;
-                break;
-            }
-        pId.setText(contestant.getId());
-        pName.setText(contestant.getName());
-        pCatagory.setText(contestant.getCatagory());
-        batch.setText(contestant.getBatch());
+
+        pCatagory.setText(gId.getText());
+         return;
     }
 
     private void generateInfo(java.awt.event.ActionEvent evt) {
         TicketMaker ticketMaker = new TicketMaker();
-        ticketMaker.doIt(contestant);
+        //ticketMaker.doIt(UUID.randomUUID(),"VVK",pCatagory.getText());
+        ticketMaker.doIt4x("VVK",pCatagory.getText());
+        sheetsdone++;
     }
 
     private void gIdActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+    }
+
+    public static Integer getSheetsdone(){
+         return sheetsdone;
     }
 
 
