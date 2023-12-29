@@ -1,6 +1,6 @@
 # Automatic-Ticket-Generator-With-Automated-QR-Code
 
-Generates ticket according to provided ticket `image` template  and read data from `CSV`  . 
+Generates ticket according to provided ticket `image` template and given Data. The QR-Code is randomly Generated and its UUID is stored to an Database for futute verification use. 
 
 ## Technology Used 
 * **Java**: used to write the whole backend 
@@ -8,4 +8,4 @@ Generates ticket according to provided ticket `image` template  and read data fr
 * **google zxing**: used to generate QR code
 * **Maven**
 ## User Guideline
-  To use this software you need to add the font name *ticketing.regular* (as it used to write data) in your system. Set the path of your csv data file and the path you want to store the generated ticket in the class named "TicketMaker.java". 
+  To use this software you need to add the font name *ticketing.regular* (as it used to write data) in your system. Give a PNG in a usable Size (??x?? pxl). Set the Message on the Ticket and Start Creating.
